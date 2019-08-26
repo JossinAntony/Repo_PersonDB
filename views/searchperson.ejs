@@ -17,13 +17,13 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-info navbar-dark">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/index">Add</a>
             </li>
             <li class="nav-item">
                     <a class="nav-link" href="/viewall">View</a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="/searchperson">Search</a>
             </li>
         </ul>
@@ -31,34 +31,24 @@
     <div class="container">
         <div class="row">
             <div class="col col-12 col-sm-2"></div>
-            <div class="col col-12 col-sm-8 border border-secondary rounded">
+            <div class="col col-12 col-sm-8">
                 <br><br><br>
-                <h1 class='text-center'>SUBMISSION FORM</h1>
+                <h1 class="text-center">Search Person</h1>
                 <br><br>
-                <form action="/saveInfo" method="POST">
+                <form action="/searchPerson" method="POST">
                     <table class="table table-borderless">
                         <tr>
-                            <td><h5 class="text-center">Name:</h5></td>
-                            <td> <input type="text" class="form-control" name="uname"> </td>
-                        </tr>
-                        <tr>
-                            <td><h5 class="text-center">Email:</h5></td>
-                            <td> <input type="email" class="form-control" name="umail"> </td>
-                        </tr>
-                        <tr>
-                            <td><h5 class="text-center">Mobile:</h5></td>
-                            <td> <input type="text" class="form-control" name="umob"> </td>
-                        </tr>
-                        <tr>
-                            <td><h5 class="text-center">Message:</h5></td>
-                            <td> <textarea type="text" class="form-control" name="umsg"></textarea> </td>
+                            <td><h4 class="text-left">Mobile:</h4></td>
+                            <td><input type="text" class="form-control" name="smob"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td> <button class="btn btn-info" type="submit">SUBMIT</button></td>
+                            <td><button class="btn btn-info" type="submit">SEARCH</button></td>
                         </tr>
-                </table>
+
+                    </table>
                 </form>
+
             </div>
             <div class="col col-12 col-sm-2"></div>
         </div>

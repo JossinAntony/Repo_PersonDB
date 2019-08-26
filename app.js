@@ -8,7 +8,7 @@ var app = new Express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 
-Mongoose.connect('mongodb://localhost:27017/FormDetailsDB');
+Mongoose.connect('mongodb://localhost:27017/PersonDB');
 //Mongoose.connect('mongodb+srv://jossin:jossin@cluster0-arjkd.mongodb.net/test?retryWrites=true&w=majority'); //mongodb cloudatlas add, remener to change password
 
 ////////////////////////////////////////////////
@@ -63,11 +63,46 @@ app.get('/viewpersons',(req,res)=>{
     });
 });
 /////////////////////////////////////////////////////
+//define the API to get a singleperson
 
+app.get('/searchByMobAPI/',(req,res)=>{
+    var prsnmob = req.query.q;
+    console.log(prsnmob)
+    formSchema.find({umob:prsnmob}, (error, data)=>{
+        if(error){
+            throw error;
+        }else{
+            res.send(data);
+        }
+    });
+});
+
+//define API link
+const searchByNameAPILink = 'http://localhost:3046/searchByMobAPI'
+//const searchByNameAPILink = "https://employeedb-jossin.herokuapp.com/retrieveInfo"
+
+//use in function to retrieve data
+app.post('/searchPerson',(req,res)=>{
+    item = req.body.smob;
+    console.log(item);
+    request(searchByNameAPILink+"/?q="+ item, (error, response, body)=>{
+        if(error){
+            throw error;
+        }else{
+            //var data = JSON.parse(body);
+            console.log(body);
+            //res.send(data);
+        } 
+    });
+});
 
 
 app.get('/',(req,res)=>{
     res.render('index');
+})
+
+app.get('/searchperson',(req,res)=>{
+    res.render('searchperson');
 })
 
 app.listen(process.env.PORT || 3046,()=>{
