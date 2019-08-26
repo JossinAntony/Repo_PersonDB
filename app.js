@@ -8,6 +8,36 @@ var app = new Express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 
+Mongoose.connect('mongodb://localhost:27017/FormDetailsDB');
+//Mongoose.connect('mongodb+srv://jossin:jossin@cluster0-arjkd.mongodb.net/test?retryWrites=true&w=majority'); //mongodb cloudatlas add, remener to change password
+
+////////////////////////////////////////////////
+//define dataschema
+const formSchema = Mongoose.model('formdetails',
+{
+    uname:String,
+    umail:String,
+    umob:String,
+    umsg:String
+}
+);
+////
+//define save API upon save button
+app.post('/saveInfo',(req,res)=>{
+    var details = req.body;
+    var person = new formSchema(details);
+    var result = person.save((error, data)=>{
+        if (error){
+            throw error;
+        }else{
+            //res.send('employee record created @' + data);
+            res.send("<script>alert('New record created!')</script>");
+        }
+    });
+});
+
+
+
 
 app.get('/',(req,res)=>{
     res.render('index');
