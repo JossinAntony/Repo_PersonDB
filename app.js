@@ -36,6 +36,33 @@ app.post('/saveInfo',(req,res)=>{
     });
 });
 
+////define retrievel API
+app.get('/retrieveInfo',(req,res)=>{
+    var retrieve = formSchema.find((error,data)=>{
+        if (error){
+            throw error;
+        }else{
+            res.send(data);
+        }
+    });
+});
+
+///get link to the retrievel API
+const retrieveDataApi = "http://localhost:3046/retrieveInfo"
+//const retrieveDataApi = "https://employeedb-jossin.herokuapp.com/retrieveInfo"
+
+///call the API in a function to retieve the data
+app.get('/viewpersons',(req,res)=>{
+    request(retrieveDataApi,(error, response, body)=>{
+        if (error){
+            throw error;
+        }else{
+            var data= JSON.parse(body);
+            res.send(data);
+        }
+    });
+});
+/////////////////////////////////////////////////////
 
 
 
