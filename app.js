@@ -41,6 +41,7 @@ const formSchema = Mongoose.model('formdetails',
     umsg:String
 }
 );
+
 ////
 //define save API upon save button
 app.get('/saveInfo/',(req,res)=>{
@@ -101,12 +102,12 @@ app.get('/searchByMobAPI/',(req,res)=>{
 
 //define API link
 //const searchByNameAPILink = 'http://localhost:3046/searchByMobAPI'
-const searchByNameAPILink = "https://persondb-jossin.herokuapp.com/searchByMobAPI"
+const searchByMobAPILink = "https://persondb-jossin.herokuapp.com/searchByMobAPI"
 
 //use in function to retrieve data
 app.post('/searchPerson',(req,res)=>{
     item = req.body.smob;
-    request(searchByNameAPILink+"/?q="+ item, (error, response, body)=>{
+    request(searchByMobAPILink+"/?q="+ item, (error, response, body)=>{
         if(error){
             throw error;
         }else{
