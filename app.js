@@ -44,8 +44,8 @@ const formSchema = Mongoose.model('formdetails',
 ////
 //define save API upon save button
 app.post('/saveInfo',(req,res)=>{
-    var details = req.body;
-    var person = new formSchema(details);
+    //var details = req.body;
+    var person = new formSchema(req.body);
     var result = person.save((error, data)=>{
         if (error){
             throw error;
