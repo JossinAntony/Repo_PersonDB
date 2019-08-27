@@ -117,6 +117,19 @@ app.post('/searchPerson',(req,res)=>{
     });
 });
 
+/////api call to delete an entry with mobile no.
+app.get('/delByMobAPI/',(req,res)=>{
+    var prsnmob = req.query.q;
+    formSchema.remove({umob:prsnmob}, (error, data)=>{
+        if(error){
+            throw error;
+        }else{
+            res.send(data);
+        }
+    });
+});
+//define api-link
+const delByMobAPILink = "https://persondb-jossin.herokuapp.com/delByMobAPI"
 
 app.get('/',(req,res)=>{
     res.render('index');
