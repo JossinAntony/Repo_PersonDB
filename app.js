@@ -50,8 +50,8 @@ app.post('/saveInfo',(req,res)=>{
         if (error){
             throw error;
         }else{
-            res.send('employee record created @' + data);
             //res.send("<script>alert('New record created!')</script>");
+            res.send(data);
         }
     });
 });
@@ -64,6 +64,7 @@ app.get('/retrieveInfo',(req,res)=>{
         }else{
             res.send(data);
         }
+        
     });
 });
 
