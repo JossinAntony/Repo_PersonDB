@@ -98,6 +98,10 @@ app.get('/',(req,res)=>{
     res.render('index');
 })
 
+app.get('/index',(req,res)=>{
+    res.render('index');
+})
+
 app.get('/searchperson',(req,res)=>{
     res.render('searchperson');
 })
