@@ -133,9 +133,9 @@ const delByMobAPILink = "https://persondb-jossin.herokuapp.com/delByMobAPI"
 
 /////////
 //update entry in database
-app.post('/updatePerson/:id',(req,res)=>{
+app.post('/updatePerson',(req,res)=>{
     var person = req.body;
-    var id = req.params.id;
+    var id = req.body._id;
     formSchema.update({_id:id},{$set:{uname:person.uname,
         umail:person.umail,
         umob:person.umob,
