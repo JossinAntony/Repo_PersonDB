@@ -89,7 +89,7 @@ app.get('/viewpersons',(req,res)=>{
 /////////////////////////////////////////////////////
 //define the API to get a singleperson
 
-app.get('/searchByMobAPI/',(req,res)=>{
+app.get('/searchByMobAPI',(req,res)=>{
     var prsnmob = req.query.q;
     formSchema.find({umob:prsnmob}, (error, data)=>{
         if(error){
