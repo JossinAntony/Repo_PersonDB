@@ -146,10 +146,12 @@ app.post('/updatePerson',(req,res)=>{
             res.send (error);
         }else{
             res.send('<script>alert("Entry updated!")</script>');
+            console.log(data);
         }
     });
     });
 //define api-link
+//const updatePersonAPILink = "https://localhost:3046/updatePerson"
 const updatePersonAPILink = "https://persondb-jossin.herokuapp.com/updatePerson"
 /////////
 
