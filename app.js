@@ -7,6 +7,7 @@ var app = new Express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 // For CORS,Pgm Line no 12 to 29
 app.use(function (req, res, next) {
