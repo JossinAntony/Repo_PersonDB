@@ -131,6 +131,28 @@ app.get('/delByMobAPI/',(req,res)=>{
 //define api-link
 const delByMobAPILink = "https://persondb-jossin.herokuapp.com/delByMobAPI"
 
+/////////
+//update entry in database
+app.post('/updatePerson/:id',(req,res)=>{
+    var person = req.body;
+    var id = req.params.id;
+    formSchema.update({_id:id},{$set:{uname:person.uname,
+        umail:person.umail,
+        umob:person.umob,
+        umsg:person.umsg,
+    }},(error,data)=>{
+        if(error){
+            throw error;
+            res.send (error);
+        }else{
+            res.send('<script>alert("Entry updated!")</script>');
+        }
+    });
+    });
+//define api-link
+const updatePersonAPILink = "https://persondb-jossin.herokuapp.com//updatePerson/"
+/////////
+
 app.get('/',(req,res)=>{
     res.render('index');
 })
